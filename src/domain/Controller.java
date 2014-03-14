@@ -1,32 +1,46 @@
 package domain;
 
+import java.util.ArrayList;
+
 
 public class Controller 
 {
+	private static ArrayList<Pattern> allPatterns;
 	
-	
-	public void Start(){
-		
+	public static void Start()
+	{
+		allPatterns = new ArrayList<Pattern>();
 	}
 	
-	public String GetPatternDocumentation(){
-		return "";
+	public static String GetPatternDocumentation(Pattern p)
+	{
+		ImporterAdapter ia = new ImporterAdapter();
+		Pattern pa = ia.ImportPattern(p);
+		return pa.getPatternName() + "\nThe problem is: " + pa.getProblem() + "\nThe solution is: " + pa.getSolution();
 	}
 	
-	public void Update(){
-		
+	public static void Update()
+	{
+		for(Pattern p : allPatterns){
+			UpdatePattern(p);
+		}
 	}
 	
-	public void UpdatePattern(Pattern p){
-		
+	public static void UpdatePattern(Pattern p)
+	{
+		ExporterAdapter ea = new ExporterAdapter();
+		ea.ExportPattern(p);
 	}
 	
-	public void AddPattern(Pattern p){
-		
+	public static void AddPattern(Pattern p)
+	{
+		allPatterns.add(p);
 	}
 	
-	public void Changepattern(Pattern p){
-		
+	public static void Changepattern(Pattern p, Pattern p2)
+	{
+		allPatterns.remove(p);
+		allPatterns.add(p2);
 	}
 	
 	
