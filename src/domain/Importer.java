@@ -1,11 +1,11 @@
 package domain;
 
-import java.util.List;
+import java.util.ArrayList;
 
 
 public interface Importer 
 {
-	public Pattern ImportPattern(Pattern p);
-	public List<Pattern> ImportAllPatterns();
-	public List<String> ImportPatternNames();
+	public Pattern ImportPattern(String p);
+	public ArrayList<Pattern> ImportAllPatterns();
+	public ArrayList<String> ImportPatternNames();
 }

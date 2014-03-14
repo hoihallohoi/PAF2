@@ -3,15 +3,26 @@ package domain;
 import java.util.ArrayList;
 
 public class Pattern {
-	private String patternName, problem, solution,consequence;
+	private String patternName, consequence;
+	private ArrayList<Problem> problems = new ArrayList<Problem>();
 	private ArrayList<String> alternatives = new ArrayList<String>();
 	
-	public Pattern(String name, String prob, String sol, String con, ArrayList<String> alt){
-		name = patternName;
-		prob = problem;
-		sol = solution;
-		con = consequence;
-		alt = alternatives;
+	public Pattern(String name, Problem p, String con, ArrayList<String> alt){
+		patternName = name;
+		problems.add(p);
+		consequence = con;
+		alternatives = alt;
+	}
+	
+	public Pattern(){
+		
+	}
+	
+	public Pattern(String name, ArrayList<Problem> p, String con, ArrayList<String> alt){
+		patternName = name;
+		problems = p;
+		consequence = con;
+		alternatives = alt;
 	}
 
 	public String getPatternName() {
@@ -38,20 +49,12 @@ public class Pattern {
 		this.alternatives = alternatives;
 	}
 
-	public String getProblem() {
-		return problem;
+	public ArrayList<Problem> getProblems() {
+		return problems;
 	}
 
-	public void setProblem(String problem) {
-		this.problem = problem;
-	}
-
-	public String getSolution() {
-		return solution;
-	}
-
-	public void setSolution(String solution) {
-		this.solution = solution;
+	public void setProblems(ArrayList<Problem> problems) {
+		this.problems = problems;
 	}
 	
 	
