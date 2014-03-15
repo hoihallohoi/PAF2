@@ -10,11 +10,8 @@ public class Controller
 	public static void Start()
 	{
 		ImporterAdapter ia = new ImporterAdapter();
-		ArrayList<Pattern> patterns = ia.ImportAllPatterns();
-		for (Pattern p : patterns)
-		{
-			allPatterns.add(p);
-		}
+		allPatterns = ia.ImportAllPatterns();
+		System.out.println("All Patterns imported!");
 	}
 	
 	public static Pattern createNewPattern(String name, Problem pr, String con, ArrayList<String> alt, Scope s, Purpose p)
@@ -45,15 +42,8 @@ public class Controller
 	
 	public static void Update()
 	{
-		for(Pattern p : allPatterns){
-			UpdatePattern(p);
-		}
-	}
-	
-	public static void UpdatePattern(Pattern p)
-	{
 		ExporterAdapter ea = new ExporterAdapter();
-		ea.ExportAllPatterns();
+		ea.ExportAllPatterns(allPatterns);
 	}
 	
 	public static void AddPattern(Pattern p)

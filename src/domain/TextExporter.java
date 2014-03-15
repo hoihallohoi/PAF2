@@ -2,17 +2,18 @@ package domain;
 
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 
 public class TextExporter implements Exporter 
 {
 
 	@Override
-	public void ExportAllPatterns() {
+	public void ExportAllPatterns(ArrayList<Pattern> patterns) {
 		System.out.println("Starting export");
 		try {
 			PrintWriter pw = new PrintWriter("Patterns.txt");
-			for(Pattern p : Controller.allPatterns)
+			for(Pattern p : patterns)
 			{
 				pw.println(p.getPatternName());
 				pw.println(p.getConsequence());

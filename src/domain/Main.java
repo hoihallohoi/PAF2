@@ -1,6 +1,5 @@
 package domain;
 
-import java.util.ArrayList;
 
 public class Main 
 {
@@ -22,11 +21,6 @@ public class Main
 		Pattern AdapterClass = Controller.createNewPattern("AdapterClass", AdapterClassProblem, "testCon", new ArrayList<String>(), Object, Behavioral);
 		TextExporter te = new TextExporter();
 		te.ExportAllPatterns();*/
-		TextImporter ti = new TextImporter();
-		ti.ImportAllPatterns();
-		for(Pattern p : Controller.allPatterns){
-			System.out.println(p.getPatternName());
-		}
-		System.out.println("Imported");
+		Controller.Start();
 	}
 }
