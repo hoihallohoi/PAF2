@@ -17,8 +17,9 @@ public class TextExporter implements Exporter
 			{
 				pw.println(p.getPatternName());
 				pw.println(p.getConsequence());
-				for(String s : p.getAlternatives())
-					pw.println(s);
+				for(Pattern pa : p.getAlternatives()){
+					pw.println(pa.getPatternName());
+				}
 				pw.println("<endAlt>");
 				for(Problem problem : p.getProblems()){
 					pw.println(problem.getProblemContext());
