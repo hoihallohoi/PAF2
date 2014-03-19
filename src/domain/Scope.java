@@ -11,11 +11,25 @@ public class Scope
 	public Scope(String name)
 	{
 		scopeName = name;
+		patterns = new ArrayList<Pattern>();
 	}
 	
-	public void addPattern(Pattern p)
-	{
-		patterns.add(p);
+	public void addProblem(Pattern p){
+		if (patterns.contains(p)){
+			System.out.println("ERROR: Problem already exists");
+		}
+		else{
+			patterns.add(p);
+		}
+	}
+	
+	public void removeProblem(Pattern p){
+		if (patterns.contains(p)){
+			patterns.remove(p);
+		}
+		else{
+			System.out.println("ERROR: Problem doesn't exist");
+		}
 	}
 	
 	public String getScopeName() {

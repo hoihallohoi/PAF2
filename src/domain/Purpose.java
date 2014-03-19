@@ -5,16 +5,30 @@ import java.util.ArrayList;
 public class Purpose {
 
 	private String purposeName;
-	private ArrayList<Pattern> patterns = new ArrayList<Pattern>();
+	private ArrayList<Pattern> patterns;
 	
 	public Purpose(String name)
 	{
 		purposeName = name;
+		patterns = new ArrayList<Pattern>();
 	}
 	
-	public void addPattern(Pattern p)
-	{
-		patterns.add(p);
+	public void addProblem(Pattern p){
+		if (patterns.contains(p)){
+			System.out.println("ERROR: Problem already exists");
+		}
+		else{
+			patterns.add(p);
+		}
+	}
+	
+	public void removeProblem(Pattern p){
+		if (patterns.contains(p)){
+			patterns.remove(p);
+		}
+		else{
+			System.out.println("ERROR: Problem doesn't exist");
+		}
 	}
 	
 	public String getPurposeName() {

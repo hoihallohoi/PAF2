@@ -31,4 +31,8 @@ public class Problem
 		this.solutionContext = solutionContext;
 	}
 	
+	public String toString(){
+		return problemContext + " \n" + solutionContext;
+	}
+	
 }

@@ -4,27 +4,34 @@ import java.util.ArrayList;
 
 public class Pattern {
 	private String patternName, consequence;
-	private ArrayList<Problem> problems = new ArrayList<Problem>();
-	private ArrayList<String> alternatives = new ArrayList<String>();
+	private ArrayList<Problem> problems;
+	private ArrayList<String> alternatives;
 	
-	public Pattern(String name, Problem p, String con, ArrayList<String> alt){
+	public Pattern(String name, String con){
 		patternName = name;
-		problems.add(p);
 		consequence = con;
-		alternatives = alt;
+		problems = new ArrayList<Problem>();
+		alternatives = new ArrayList<String>();
 	}
 	
-	public Pattern(){
-		
+	public void addProblem(Problem p){
+		if (problems.contains(p)){
+			System.out.println("ERROR: Problem already exists");
+		}
+		else{
+			problems.add(p);
+		}
 	}
 	
-	public Pattern(String name, ArrayList<Problem> p, String con, ArrayList<String> alt){
-		patternName = name;
-		problems = p;
-		consequence = con;
-		alternatives = alt;
+	public void removeProblem(Problem p){
+		if (problems.contains(p)){
+			problems.remove(p);
+		}
+		else{
+			System.out.println("ERROR: Problem doesn't exist");
+		}
 	}
-
+	
 	public String getPatternName() {
 		return patternName;
 	}

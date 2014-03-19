@@ -10,16 +10,15 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 
+@SuppressWarnings("serial")
 public class MainFrame extends JFrame implements ActionListener {
-
-	private static final long serialVersionUID = -8499788584042112152L; //eclipse generated
 
 	JMenuBar menuBar;
 	JMenu selectorMenu;
 	JMenu editorMenu;
 	JMenuItem selectorMenuItem;
 	JMenuItem editorMenuItem;
-	
+	@SuppressWarnings("serial")
 	public MainFrame() {
 		setLayout(new FlowLayout());
 		setTitle("Patternized");
@@ -51,7 +50,7 @@ public class MainFrame extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent event) {
 		if (event.getSource() == selectorMenuItem){
 			this.dispose();
-			new MainFrame();
+			new SelectorFrame();
 		}
 		
 		if (event.getSource() == editorMenuItem){
