@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class Controller 
 {
 	public static ArrayList<Pattern> allPatterns = new ArrayList<Pattern>();
-	public static ArrayList<Context> allContexts = new ArrayList<Context>();
+	public static ArrayList<Context> allContexts = new ArrayList<Context>(); //Does not include the main contexts "Scope" and "Purpose"
 	
 	public static void Start()
 	{
@@ -17,9 +17,9 @@ public class Controller
 		System.out.println("All Patterns imported!");
 	}
 	
-	public static Pattern createNewPattern(String name, String con, Context scope, Context purpose)
+	public static Pattern createNewPattern(String name,String summary, String con, Context scope, Context purpose)
 	{
-		Pattern pat = new Pattern(name,con);
+		Pattern pat = new Pattern(name, summary, con);
 		scope.addPattern(pat);
 		purpose.addPattern(pat);
 		allPatterns.add(pat);
@@ -27,12 +27,24 @@ public class Controller
 		return pat;
 	}
 	
-	public static String GetPatternDocumentation(String p)
-	{
-		ImporterAdapter ia = new ImporterAdapter();
-		Pattern pa = ia.ImportPattern(p);
-		return "";
+	public static Context createNewContext(String name){
+		Context c = new Context(name);
+		allContexts.add(c);
+		return c;
 	}
+	
+	public static ArrayList<Context> getAllContexts(){
+		return allContexts;
+	}
+	
+	public static ArrayList<Pattern> getPatternsByContext(Object c){
+		if(c instanceof Context){
+			Context context = (Context) c;
+			return context.getPatterns();
+		}
+		return null;
+	}
+	
 	
 	public static void Update()
 	{
@@ -54,6 +66,7 @@ public class Controller
 	public static Object[] getProblemByPattern(Pattern p){
 		return p.getProblems().toArray();
 	}
+	
 	public static void importImage(File f){
 		ImporterAdapter ia = new ImporterAdapter();
 		Image image = ia.importImage(f);

@@ -3,6 +3,8 @@ package userInterface;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -11,7 +13,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 
 @SuppressWarnings("serial")
-public class MainFrame extends JFrame implements ActionListener {
+public class MainFrame extends JFrame implements ActionListener, ItemListener {
 
 	JMenuBar menuBar;
 	JMenu selectorMenu;
@@ -40,7 +42,7 @@ public class MainFrame extends JFrame implements ActionListener {
 		selectorMenuItem.addActionListener(this);
 		editorMenuItem.addActionListener(this);
 		
-		setSize(400, 400);
+		setSize(300, 300);
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
@@ -58,5 +60,11 @@ public class MainFrame extends JFrame implements ActionListener {
 			JOptionPane.showMessageDialog(this,"This feature is not yet implemented");
 		}
 
+	}
+
+	@Override
+	public void itemStateChanged(ItemEvent arg0) {
+		// TODO Auto-generated method stub
+		
 	}
 }

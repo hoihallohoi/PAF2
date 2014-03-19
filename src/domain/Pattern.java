@@ -3,12 +3,13 @@ package domain;
 import java.util.ArrayList;
 
 public class Pattern {
-	private String patternName, consequence;
+	private String patternName,summary, consequence;
 	private ArrayList<Problem> problems;
 	private ArrayList<Pattern> alternatives;
 	
-	public Pattern(String name, String con){
+	public Pattern(String name, String sum, String con){
 		patternName = name;
+		summary = sum;
 		consequence = con;
 		problems = new ArrayList<Problem>();
 		alternatives = new ArrayList<Pattern>();
@@ -88,10 +89,6 @@ public class Pattern {
 	}
 	
 	public String toString(){
-		String s  = patternName + " \n" + "Consequences:\n" + consequence + "\n\nProblems:\n";
-		for(Problem p : problems){
-			s = s + p.toString();
-		}
-		return s +"\n";
+		return patternName;
 	}
 }

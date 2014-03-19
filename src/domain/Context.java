@@ -57,6 +57,10 @@ public class Context implements ContextComponent{
 			System.out.println("ERROR: Problem doesn't exist");
 		}
 	}
+	
+	public String toString(){
+		return name;
+	}
 
 	@Override
 	public String getName() {
