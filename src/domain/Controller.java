@@ -1,6 +1,5 @@
 package domain;
 
-import java.awt.Image;
 import java.io.File;
 import java.util.ArrayList;
 
@@ -18,7 +17,7 @@ public class Controller
 	
 	public static Pattern createNewPattern(String name, String con, Scope s, Purpose p)
 	{
-		Pattern pat = new Pattern();//needs to be changed
+		Pattern pat = new Pattern(name,con);
 		s.addPattern(pat);
 		p.addPattern(pat);
 		allPatterns.add(pat);
