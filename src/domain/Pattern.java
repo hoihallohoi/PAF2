@@ -14,6 +14,11 @@ public class Pattern {
 		alternatives = new ArrayList<String>();
 	}
 	
+	public Pattern(){
+		problems = new ArrayList<Problem>();
+		alternatives = new ArrayList<String>();
+	}
+	
 	public void addProblem(Problem p){
 		if (problems.contains(p)){
 			System.out.println("ERROR: Problem already exists");
