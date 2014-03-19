@@ -33,26 +33,26 @@ public class TextImporter implements Importer
 			e.printStackTrace();
 		}
 		br = new BufferedReader(new InputStreamReader(fis, Charset.forName("UTF-8")));
-		Pattern p = new Pattern();
 		try {
 			while ((line = br.readLine()) != null) {
-			    p.setPatternName(line);
-			    p.setConsequence(br.readLine());
+			    String name = line;
+			    String con = line;
+			    Pattern p = new Pattern(name ,con);
 			    ArrayList<String> alts = new ArrayList<String>();
 			    while((!(line = br.readLine()).equals("<endAlt>"))){
-			    	alts.add(line);
+			    	String pname = line;
+			    	String pcon = line;
+			    	Pattern pa = new Pattern(pname, pcon);
+			    	p.addAlternatives(pa);
 			    }
 			    ArrayList<Problem> problems = new ArrayList<Problem>();
 			    while((!(line = br.readLine()).equals("<#&$#>"))){
-			    	Problem prob = new Problem();
-			    	prob.setProblemContext(line);
-			    	prob.setSolutionContext(br.readLine());
-			    	problems.add(prob);
+			    	String problem = line;
+			    	String sol = line;
+			    	Problem prob = new Problem(problem, sol);
+			    	p.addProblem(prob);
 			    }
-			    p.setAlternatives(alts);
-			    p.setProblems(problems);
 			    patterns.add(p);
-			    p = new Pattern();
 			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
