@@ -14,22 +14,13 @@ public class Controller
 		System.out.println("All Patterns imported!");
 	}
 	
-	public static Pattern createNewPattern(String name, Problem pr, String con, ArrayList<String> alt, Scope s, Purpose p)
+	public static Pattern createNewPattern(String name, String con, Scope s, Purpose p)
 	{
-		Pattern pat = new Pattern(name,pr,con,alt);
+		Pattern pat = new Pattern(name,con);
 		s.addPattern(pat);
 		p.addPattern(pat);
 		allPatterns.add(pat);
 		System.out.println("Arraylist size: " + allPatterns.size());
-		return pat;
-	}
-	
-	public static Pattern createNewPattern(String name, ArrayList<Problem> pr, String con, ArrayList<String> alt, Scope s, Purpose p)
-	{
-		Pattern pat = new Pattern(name,pr,con,alt);
-		s.addPattern(pat);
-		p.addPattern(pat);
-		allPatterns.add(pat);
 		return pat;
 	}
 	
@@ -55,6 +46,10 @@ public class Controller
 	{
 		allPatterns.remove(p);
 		allPatterns.add(p2);
-	}	
+	}
+	
+	public static Object[] getProblemByPattern(Pattern p){
+		return p.getProblems().toArray();
+	}
 	
 }
