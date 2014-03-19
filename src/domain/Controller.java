@@ -1,5 +1,7 @@
 package domain;
 
+import java.awt.Image;
+import java.io.File;
 import java.util.ArrayList;
 
 
@@ -16,7 +18,7 @@ public class Controller
 	
 	public static Pattern createNewPattern(String name, String con, Scope s, Purpose p)
 	{
-		Pattern pat = new Pattern(name,con);
+		Pattern pat = new Pattern();//needs to be changed
 		s.addPattern(pat);
 		p.addPattern(pat);
 		allPatterns.add(pat);
@@ -50,6 +52,10 @@ public class Controller
 	
 	public static Object[] getProblemByPattern(Pattern p){
 		return p.getProblems().toArray();
+	}
+	public static void importImage(File f){
+		ImporterAdapter ia = new ImporterAdapter();
+		Image image = ia.importImage(f);
 	}
 	
 }

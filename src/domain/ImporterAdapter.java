@@ -1,5 +1,7 @@
 package domain;
 
+import java.awt.Image;
+import java.io.File;
 import java.util.ArrayList;
 
 
@@ -18,6 +20,10 @@ public class ImporterAdapter implements Importer
 		TextImporter ti = new TextImporter();
 		return ti.ImportAllPatterns();
 
+	}
+	public Image importImage(File f){
+		ImageImporter ii = new ImageImporter();
+		return ii.importImage(f);
 	}
 
 }
