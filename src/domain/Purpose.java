@@ -13,7 +13,7 @@ public class Purpose {
 		patterns = new ArrayList<Pattern>();
 	}
 	
-	public void addProblem(Pattern p){
+	public void addPattern(Pattern p){
 		if (patterns.contains(p)){
 			System.out.println("ERROR: Problem already exists");
 		}
@@ -22,7 +22,7 @@ public class Purpose {
 		}
 	}
 	
-	public void removeProblem(Pattern p){
+	public void removePattern(Pattern p){
 		if (patterns.contains(p)){
 			patterns.remove(p);
 		}

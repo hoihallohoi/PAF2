@@ -25,10 +25,10 @@ public class main {
 		Problem builderProblem = new Problem("TestProb2", "TestSolu2");
 		Problem decoraterProblem = new Problem("TestProb3", "TestSolu3");
 		Problem adapterClassProblem = new Problem("TestProb4", "TestSolu4");
-		Pattern strategy = Controller.createNewPattern("Strategy", strategyProblem, "testCon", new ArrayList<String>(){{add("A");add("B");add("C");}}, objectScope, behavioral);
-		Pattern builder = Controller.createNewPattern("Builder", builderProblem, "testCon", new ArrayList<String>(), objectScope, behavioral);
-		Pattern decorator = Controller.createNewPattern("Decorator", decoraterProblem, "testCon", new ArrayList<String>(), objectScope, behavioral);
-		Pattern adapterClass = Controller.createNewPattern("AdapterClass", adapterClassProblem, "testCon", new ArrayList<String>(), objectScope, behavioral);
+		Pattern strategy = Controller.createNewPattern("Strategy", "testCon", objectScope, behavioral);
+		Pattern builder = Controller.createNewPattern("Builder", "testCon", objectScope, behavioral);
+		Pattern decorator = Controller.createNewPattern("Decorator", "testCon", objectScope, behavioral);
+		Pattern adapterClass = Controller.createNewPattern("AdapterClass", "testCon", objectScope, behavioral);
 		//TextExporter te = new TextExporter();
 		//te.ExportAllPatterns();
 		Controller.Start();  
