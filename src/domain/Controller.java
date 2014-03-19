@@ -1,5 +1,6 @@
 package domain;
 
+import java.io.File;
 import java.util.ArrayList;
 
 
@@ -50,6 +51,10 @@ public class Controller
 	
 	public static Object[] getProblemByPattern(Pattern p){
 		return p.getProblems().toArray();
+	}
+	public static void importImage(File f){
+		ImporterAdapter ia = new ImporterAdapter();
+		Image image = ia.importImage(f);
 	}
 	
 }
