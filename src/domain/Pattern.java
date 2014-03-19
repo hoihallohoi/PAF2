@@ -3,16 +3,17 @@ package domain;
 import java.util.ArrayList;
 
 public class Pattern {
-	private String patternName,summary, consequence;
+	private String patternName,summary;
 	private ArrayList<Problem> problems;
 	private ArrayList<Pattern> alternatives;
+	private ArrayList<String> consequences;
 	
-	public Pattern(String name, String sum, String con){
+	public Pattern(String name, String sum){
 		patternName = name;
 		summary = sum;
-		consequence = con;
 		problems = new ArrayList<Problem>();
 		alternatives = new ArrayList<Pattern>();
+		consequences = new ArrayList<String>();
 	}
 	
 	public Pattern(){
@@ -40,7 +41,7 @@ public class Pattern {
 	
 	public void addAlternatives(Pattern p){
 		if (alternatives.contains(p)){
-			System.out.println("ERROR: Problem already exists");
+			System.out.println("ERROR: Alternative already exists");
 		}
 		else{
 			alternatives.add(p);
@@ -52,7 +53,25 @@ public class Pattern {
 			alternatives.remove(p);
 		}
 		else{
-			System.out.println("ERROR: Problem doesn't exist");
+			System.out.println("ERROR: Alternative doesn't exist");
+		}
+	}
+	
+	public void addConsequences(String p){
+		if (consequences.contains(p)){
+			System.out.println("ERROR: Consequence already exists");
+		}
+		else{
+			consequences.add(p);
+		}
+	}
+	
+	public void removeConsequences(String p){
+		if (consequences.contains(p)){
+			consequences.remove(p);
+		}
+		else{
+			System.out.println("ERROR: Consequence doesn't exist");
 		}
 	}
 	
@@ -63,13 +82,13 @@ public class Pattern {
 	public void setPatternName(String patternName) {
 		this.patternName = patternName;
 	}
-
-	public String getConsequence() {
-		return consequence;
+	
+	public String getSummary() {
+		return summary;
 	}
-
-	public void setConsequence(String consequence) {
-		this.consequence = consequence;
+	
+	public void setSummary(String summary) {
+		this.summary = summary;
 	}
 
 	public ArrayList<Pattern> getAlternatives() {

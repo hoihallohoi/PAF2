@@ -3,6 +3,7 @@ package domain;
 import java.awt.Image;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class Controller 
@@ -17,9 +18,9 @@ public class Controller
 		System.out.println("All Patterns imported!");
 	}
 	
-	public static Pattern createNewPattern(String name,String summary, String con, Context scope, Context purpose)
+	public static Pattern createNewPattern(String name,String summary, Context scope, Context purpose)
 	{
-		Pattern pat = new Pattern(name, summary, con);
+		Pattern pat = new Pattern(name, summary);
 		scope.addPattern(pat);
 		purpose.addPattern(pat);
 		allPatterns.add(pat);
@@ -43,6 +44,18 @@ public class Controller
 			return context.getPatterns();
 		}
 		return null;
+	}
+	
+	public static ArrayList<Context> getContextByPattern(Pattern p){
+		ArrayList<Context> selectedContexts = new ArrayList<Context>();
+		for (Context c : allContexts){
+			for (Pattern pattern : allPatterns){
+				if(pattern.equals(p)){
+					selectedContexts.add(c);
+				}
+			}
+		}
+		return selectedContexts;
 	}
 	
 	

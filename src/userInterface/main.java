@@ -36,16 +36,16 @@ public class main {
 		Problem decoratorProblem = new Problem("TestProb3", "TestSolu3");
 		Problem adapterClassProblem = new Problem("TestProb4", "TestSolu4");
 		
-		Pattern strategy = Controller.createNewPattern("Strategy", "summary", "testCon", objectScope, behavioral);
+		Pattern strategy = Controller.createNewPattern("Strategy", "summary", objectScope, behavioral);
 		scope.addPattern(strategy);
 		purpose.addPattern(strategy);
-		Pattern builder = Controller.createNewPattern("Builder", "summary", "testCon", objectScope, behavioral);
+		Pattern builder = Controller.createNewPattern("Builder", "summary", objectScope, behavioral);
 		scope.addPattern(builder);
 		purpose.addPattern(builder);
-		Pattern decorator = Controller.createNewPattern("Decorator", "summary", "testCon", objectScope, behavioral);
+		Pattern decorator = Controller.createNewPattern("Decorator", "summary", objectScope, behavioral);
 		scope.addPattern(decorator);
 		purpose.addPattern(decorator);
-		Pattern adapterClass = Controller.createNewPattern("AdapterClass", "summary", "testCon", objectScope, behavioral);
+		Pattern adapterClass = Controller.createNewPattern("AdapterClass", "summary", objectScope, behavioral);
 		scope.addPattern(adapterClass);
 		purpose.addPattern(adapterClass);
 		
@@ -57,8 +57,8 @@ public class main {
 		//te.ExportAllPatterns();
 		//Controller.Start();  
 		
-		System.out.println("Scope: " + scope.showChilds());
-		System.out.println("Purpose: " + purpose.showChilds());
+		//System.out.println("Scope: " + scope.showChilds());
+		//System.out.println("Purpose: " + purpose.showChilds());
 		//System.out.println(strategy);
 		
 		
