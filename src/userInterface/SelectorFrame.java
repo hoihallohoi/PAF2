@@ -14,12 +14,6 @@ public class SelectorFrame extends MainFrame{
 		
 		scope = new JComboBox();
 		this.add(scope);
-		
-		problem = new JComboBox();
-		this.add(scope);
-		
-		pattern = new JComboBox();
-		this.add(pattern);
 	}
 	
 	public void actionPerformed(ActionEvent event) {

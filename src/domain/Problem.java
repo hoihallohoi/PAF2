@@ -32,7 +32,7 @@ public class Problem
 	}
 	
 	public String toString(){
-		return problemContext + " \n" + solutionContext;
+		return "Problem: " + problemContext + " \nSolution: " + solutionContext;
 	}
 	
 }

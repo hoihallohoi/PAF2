@@ -8,6 +8,7 @@ import java.util.ArrayList;
 public class Controller 
 {
 	public static ArrayList<Pattern> allPatterns = new ArrayList<Pattern>();
+	public static ArrayList<Context> allContexts = new ArrayList<Context>();
 	
 	public static void Start()
 	{
@@ -16,13 +17,13 @@ public class Controller
 		System.out.println("All Patterns imported!");
 	}
 	
-	public static Pattern createNewPattern(String name, String con, Scope s, Purpose p)
+	public static Pattern createNewPattern(String name, String con, Context scope, Context purpose)
 	{
 		Pattern pat = new Pattern(name,con);
-		s.addPattern(pat);
-		p.addPattern(pat);
+		scope.addPattern(pat);
+		purpose.addPattern(pat);
 		allPatterns.add(pat);
-		System.out.println("Arraylist size: " + allPatterns.size());
+		//System.out.println("Arraylist size: " + allPatterns.size());
 		return pat;
 	}
 	

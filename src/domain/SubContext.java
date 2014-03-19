@@ -2,18 +2,25 @@ package domain;
 
 import java.util.ArrayList;
 
+public class SubContext implements ContextComponent{
 
-public class Scope 
-{
-	private String scopeName;
+	private String name;
 	private ArrayList<Pattern> patterns = new ArrayList<Pattern>();
 	
-	public Scope(String name)
-	{
-		scopeName = name;
-		patterns = new ArrayList<Pattern>();
+	public SubContext(String name){
+		this.name = name;
 	}
 	
+	@Override
+	public String showChilds(){
+		String s = "Sub Context: \n" +name+ "\n Patterns: ";
+		for (Pattern p : patterns){
+			s = s + p.toString() + "\n";
+		}
+		return s;
+	}
+	
+	@Override
 	public void addPattern(Pattern p){
 		if (patterns.contains(p)){
 			System.out.println("ERROR: Problem already exists");
@@ -23,6 +30,7 @@ public class Scope
 		}
 	}
 	
+	@Override
 	public void removePattern(Pattern p){
 		if (patterns.contains(p)){
 			patterns.remove(p);
@@ -31,17 +39,14 @@ public class Scope
 			System.out.println("ERROR: Problem doesn't exist");
 		}
 	}
-	
-	public String getScopeName() {
-		return scopeName;
+
+	@Override
+	public String getName() {
+		return name;
 	}
-	public void setScopeName(String scopeName) {
-		this.scopeName = scopeName;
-	}
+
+	@Override
 	public ArrayList<Pattern> getPatterns() {
 		return patterns;
-	}
-	public void setPatterns(ArrayList<Pattern> patterns) {
-		this.patterns = patterns;
-	}
+	}	
 }

@@ -88,10 +88,10 @@ public class Pattern {
 	}
 	
 	public String toString(){
-		String s  = patternName + " \n" + "Consequences: " + consequence + "\n Problems:";
+		String s  = patternName + " \n" + "Consequences:\n" + consequence + "\n\nProblems:\n";
 		for(Problem p : problems){
 			s = s + p.toString();
 		}
-		return s;
+		return s +"\n";
 	}
 }

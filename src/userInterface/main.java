@@ -2,11 +2,10 @@ package userInterface;
 
 import java.util.ArrayList;
 
+import domain.Context;
 import domain.Controller;
 import domain.Pattern;
 import domain.Problem;
-import domain.Purpose;
-import domain.Scope;
 import domain.TextExporter;
 
 public class main {
@@ -16,28 +15,49 @@ public class main {
 	 */
 	public static void main(String[] args) {
 		
-		Scope classScope = new Scope("Class");
-		Scope objectScope = new Scope("Object");
-		Purpose creational = new Purpose("Creational");
-		Purpose behavioral = new Purpose("Behavioral");
-		Purpose structural = new Purpose("Structural");
+		Context classScope = new Context("Class");
+		Context objectScope = new Context("Object");
+		Context creational = new Context("Creational");
+		Context behavioral = new Context("Behavioral");
+		Context structural = new Context("Structural");
+		Context scope = new Context("Scope");
+		Context purpose = new Context("Purpose");
+		
+		scope.addComponent(classScope);
+		scope.addComponent(objectScope);
+		purpose.addComponent(creational);
+		purpose.addComponent(behavioral);
+		purpose.addComponent(structural);
+		
 		Problem strategyProblem = new Problem("TestProb1", "TestSolu1");
 		Problem builderProblem = new Problem("TestProb2", "TestSolu2");
 		Problem decoratorProblem = new Problem("TestProb3", "TestSolu3");
 		Problem adapterClassProblem = new Problem("TestProb4", "TestSolu4");
+		
 		Pattern strategy = Controller.createNewPattern("Strategy", "testCon", objectScope, behavioral);
+		scope.addPattern(strategy);
+		purpose.addPattern(strategy);
 		Pattern builder = Controller.createNewPattern("Builder", "testCon", objectScope, behavioral);
+		scope.addPattern(builder);
+		purpose.addPattern(builder);
 		Pattern decorator = Controller.createNewPattern("Decorator", "testCon", objectScope, behavioral);
+		scope.addPattern(decorator);
+		purpose.addPattern(decorator);
 		Pattern adapterClass = Controller.createNewPattern("AdapterClass", "testCon", objectScope, behavioral);
+		scope.addPattern(adapterClass);
+		purpose.addPattern(adapterClass);
+		
 		strategy.addProblem(strategyProblem);
 		builder.addProblem(builderProblem);
 		decorator.addProblem(decoratorProblem);
 		adapterClass.addProblem(adapterClassProblem);
 		//TextExporter te = new TextExporter();
 		//te.ExportAllPatterns();
-		Controller.Start();  
+		//Controller.Start();  
 		
-		System.out.println(strategy);
+		System.out.println("Scope: " + scope.showChilds());
+		System.out.println("Purpose: " + purpose.showChilds());
+		//System.out.println(strategy);
 		
 		
 		    MainFrame mf = new MainFrame();
