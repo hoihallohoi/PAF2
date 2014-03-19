@@ -37,7 +37,7 @@ public class main {
 		//te.ExportAllPatterns();
 		Controller.Start();  
 		
-		System.out.println(Controller.getProblemByPattern(builder).toString());
+		System.out.println(strategy);
 		
 		
 		    MainFrame mf = new MainFrame();
