@@ -1,5 +1,6 @@
 package userInterface;
 
+import java.io.File;
 import java.util.ArrayList;
 
 import domain.Context;
@@ -58,6 +59,18 @@ public class main {
 		builder.addProblem(builderProblem);
 		decorator.addProblem(decoratorProblem);
 		adapterClass.addProblem(adapterClassProblem);
+<<<<<<< HEAD
+=======
+		File f = new File("Penguins.jpg");
+		Controller.importImage(f, strategy);
+		//TextExporter te = new TextExporter();
+		//te.ExportAllPatterns();
+		//Controller.Start();  
+		
+		//System.out.println("Scope: " + scope.showChilds());
+		//System.out.println("Purpose: " + purpose.showChilds());
+		//System.out.println(strategy);
+>>>>>>> ce7a3e247730e48ce28176ca23ce90342b2f61fd
 		
 		// TextExporter te = new TextExporter();
 		// te.ExportAllPatterns();

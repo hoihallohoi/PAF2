@@ -36,16 +36,18 @@ public class TextImporter implements Importer
 		try {
 			while ((line = br.readLine()) != null) {
 			    String name = line;
-			    String con = line;
-			    Pattern p = new Pattern(name ,con);
-			    ArrayList<String> alts = new ArrayList<String>();
+			    String sum = line;
+			    Pattern p = new Pattern(name ,sum);
+			    while((line = br.readLine()).equals("endCon")){
+			    	String con = line;
+			    	p.addConsequences(con);
+			    }
 			    while((!(line = br.readLine()).equals("<endAlt>"))){
 			    	String pname = line;
-			    	String pcon = line;
-			    	Pattern pa = new Pattern(pname, pcon);
+			    	String psum = line;
+			    	Pattern pa = new Pattern(pname, psum);
 			    	p.addAlternatives(pa);
 			    }
-			    ArrayList<Problem> problems = new ArrayList<Problem>();
 			    while((!(line = br.readLine()).equals("<#&$#>"))){
 			    	String problem = line;
 			    	String sol = line;
