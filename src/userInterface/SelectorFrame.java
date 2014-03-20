@@ -1,16 +1,14 @@
 package userInterface;
 
-import java.awt.Dimension;
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ItemEvent;
 
-import javax.swing.Box;
-import javax.swing.BoxLayout;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 import domain.Controller;
 
@@ -24,6 +22,9 @@ public class SelectorFrame extends MainFrame{
 	public SelectorFrame(){
 		super();
 		
+		JPanel firstSelection = new JPanel();
+		JPanel secondSelection = new JPanel();
+		JPanel buttonPanel = new JPanel();
 		
 		contextSelectLabel = new JLabel("Select Scope/Purpose: ");
 		contextSelect = new JComboBox(Controller.getAllContexts().toArray());
@@ -38,12 +39,17 @@ public class SelectorFrame extends MainFrame{
 		selectButton = new JButton("Select Pattern");
 		selectButton.addActionListener(this);
 		
-		//Add all the items
-		this.add(contextSelectLabel);
-		this.add(contextSelect);
-		this.add(selectPatternLabel);
-		this.add(selectPattern);
-		this.add(selectButton);
+		//Add all the items to panels
+		firstSelection.add(contextSelectLabel, BorderLayout.LINE_START);
+		firstSelection.add(contextSelect, BorderLayout.CENTER);
+		secondSelection.add(selectPatternLabel, BorderLayout.LINE_START);
+		secondSelection.add(selectPattern, BorderLayout.CENTER);
+		buttonPanel.add(selectButton, BorderLayout.CENTER);
+		
+		//Add Panels
+		this.add(firstSelection, BorderLayout.NORTH);
+		this.add(secondSelection, BorderLayout.CENTER);
+		this.add(buttonPanel, BorderLayout.SOUTH);
 	}
 	
 	public void itemStateChanged(ItemEvent itemEvent) {
