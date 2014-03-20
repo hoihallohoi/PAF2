@@ -61,12 +61,9 @@ public class main {
 		builder.addProblem(builderProblem);
 		decorator.addProblem(decoratorProblem);
 		adapterClass.addProblem(adapterClassProblem);
-<<<<<<< HEAD
-=======
 
->>>>>>> 42f5fb74f04bd009c63811e10760934bb826909d
 		File f = new File("Penguins.jpg");
-		//Controller.importImage(f, strategy);
+		Controller.importImage(f, strategy);
 		//Controller.Start();
 		Controller.Update();
 		//TextExporter te = new TextExporter();
@@ -76,10 +73,6 @@ public class main {
 		//System.out.println("Scope: " + scope.showChilds());
 		//System.out.println("Purpose: " + purpose.showChilds());
 		//System.out.println(strategy);
-<<<<<<< HEAD
-=======
-
->>>>>>> 42f5fb74f04bd009c63811e10760934bb826909d
 		
 		// TextExporter te = new TextExporter();
 		// te.ExportAllPatterns();

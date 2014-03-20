@@ -1,6 +1,5 @@
 package domain;
 
-import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -12,11 +11,13 @@ public class ImageExporter{
 	private static final String formatName = "jpg";
 
 public void exportImage(Pattern p){
+	File f = new File(p.getPatternName() + " image");
 	BufferedImage image = (BufferedImage) p.getImage();
 	if (image == null)
 		return;
 	try {
-		ImageIO.write(image, formatName, new File(p.getPatternName() + " image"));
+		System.out.println("file name wordt: " + p.getPatternName() + " image");
+		ImageIO.write(image, formatName, f);
 	} catch (IOException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
