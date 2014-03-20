@@ -8,30 +8,36 @@ import java.util.ArrayList;
 public class TextExporter implements Exporter 
 {
 
+	private PrintWriter pw = null;
+	
+	private void printTo(String s){
+		System.out.println("PRINTING TO FILE: " + s);
+		pw.println(s);
+	}
+	
 	@Override
 	public void ExportAllPatterns(ArrayList<Pattern> patterns) {
-		System.out.println("Starting export");
-		System.out.println(patterns);
 		try {
-			PrintWriter pw = new PrintWriter("Patterns.txt");
+			pw = new PrintWriter("Patterns.txt");
 			for(Pattern p : patterns)
 			{
-				pw.println(p.getPatternName());
-				pw.println(p.getSummary());
+				printTo(p.getPatternName());
+				printTo(p.getSummary());
 				for(String c : p.getConsequences()){
-					pw.println(c);
+					System.out.println("CONSEQ: " + c);
+					printTo(c);
 				}
-				pw.println("<endCon>");
+				printTo("<endCon>");
 				for(Pattern pa : p.getAlternatives()){
-					pw.println(pa.getPatternName());
-					pw.println(pa.getSummary());
+					printTo(pa.getPatternName());
+					printTo(pa.getSummary());
 				}
-				pw.println("<endAlt>");
+				printTo("<endAlt>");
 				for(Problem problem : p.getProblems()){
-					pw.println(problem.getProblemContext());
-					pw.println(problem.getSolutionContext());
+					printTo(problem.getProblemContext());
+					printTo(problem.getSolutionContext());
 				}
-				pw.println("<#&$#>");
+				printTo("<#&$#>");
 				System.out.println("Finished Export");
 			}
 			pw.close();
