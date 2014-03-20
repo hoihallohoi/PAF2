@@ -1,5 +1,6 @@
 package domain;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -7,44 +8,66 @@ import java.util.ArrayList;
 
 public class TextExporter implements Exporter 
 {
-
-	private PrintWriter pw = null;
-	
-	private void printTo(String s){
-		System.out.println("PRINTING TO FILE: " + s);
-		pw.println(s);
-	}
 	
 	@Override
 	public void ExportAllPatterns(ArrayList<Pattern> patterns) {
 		try {
-			pw = new PrintWriter("Patterns.txt");
+			File f = new File("Patterns.txt");
+			PrintWriter pw = new PrintWriter(f);
 			for(Pattern p : patterns)
 			{
-				printTo(p.getPatternName());
-				printTo(p.getSummary());
+				pw.println(p.getPatternName());
+				pw.println(p.getSummary());
 				for(String c : p.getConsequences()){
 					System.out.println("CONSEQ: " + c);
-					printTo(c);
+					pw.println(c);
 				}
-				printTo("<endCon>");
+				pw.println("<endCon>");
 				for(Pattern pa : p.getAlternatives()){
-					printTo(pa.getPatternName());
-					printTo(pa.getSummary());
+					pw.println(pa.getPatternName());
+					pw.println(pa.getSummary());
 				}
-				printTo("<endAlt>");
+				pw.println("<endAlt>");
 				for(Problem problem : p.getProblems()){
-					printTo(problem.getProblemContext());
-					printTo(problem.getSolutionContext());
+					pw.println(problem.getProblemContext());
+					pw.println(problem.getSolutionContext());
 				}
-				printTo("<#&$#>");
+				pw.println("<#&$#>");
+				pw.println("<End>");
 				System.out.println("Finished Export");
+				ImageExporter ie = new ImageExporter();
+				ie.exportImage(p);	
 			}
 			pw.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
 		System.out.println("hoi");
+		
+	}
+
+	@Override
+	public void ExportAllContext(ArrayList<Context> contexts) {
+		try {
+			System.out.println("EXPORTING CONTEXT");
+			PrintWriter pw = new PrintWriter("Context.txt");
+			for(Context c : contexts){
+				pw.println(c.getName());
+				for(ContextComponent cc : c.getChildContexts()){
+					Context co = (Context)cc;
+					pw.println(co.getName());					
+				}
+				pw.println("<endChilds>");
+				for(Pattern p : c.getPatterns()){
+					pw.println(p.getPatternName());
+				}
+				pw.println("<End>");
+			}
+			pw.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 

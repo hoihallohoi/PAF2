@@ -24,7 +24,9 @@ public class main {
 		Context structural = Controller.createNewContext("Structural");
 
 		Context scope = new Context("Scope");
+		Controller.everyContext.add(scope);
 		Context purpose = new Context("Purpose");
+		Controller.everyContext.add(purpose);
 
 		scope.addComponent(classScope);
 		scope.addComponent(objectScope);
@@ -59,10 +61,10 @@ public class main {
 		builder.addProblem(builderProblem);
 		decorator.addProblem(decoratorProblem);
 		adapterClass.addProblem(adapterClassProblem);
-<<<<<<< HEAD
-=======
 		File f = new File("Penguins.jpg");
-		Controller.importImage(f, strategy);
+		//Controller.importImage(f, strategy);
+		//Controller.Start();
+		Controller.Update();
 		//TextExporter te = new TextExporter();
 		//te.ExportAllPatterns();
 		//Controller.Start();  
@@ -70,7 +72,6 @@ public class main {
 		//System.out.println("Scope: " + scope.showChilds());
 		//System.out.println("Purpose: " + purpose.showChilds());
 		//System.out.println(strategy);
->>>>>>> ce7a3e247730e48ce28176ca23ce90342b2f61fd
 		
 		// TextExporter te = new TextExporter();
 		// te.ExportAllPatterns();

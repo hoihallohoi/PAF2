@@ -122,7 +122,15 @@ public class Pattern {
 	}
 
 	public void addImage(Image image) {
-		this.image = image;
+		this.setImage(image);
 		
+	}
+
+	public Image getImage() {
+		return image;
+	}
+
+	public void setImage(Image image) {
+		this.image = image;
 	}
 }

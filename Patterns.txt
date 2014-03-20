@@ -4,7 +4,10 @@ summary
 <endAlt>
 TestProb1
 TestSolu1
+TestProb2
+TestSolu2
 <#&$#>
+<End>
 Builder
 summary
 <endCon>
@@ -12,6 +15,7 @@ summary
 TestProb2
 TestSolu2
 <#&$#>
+<End>
 Decorator
 summary
 <endCon>
@@ -19,6 +23,7 @@ summary
 TestProb3
 TestSolu3
 <#&$#>
+<End>
 AdapterClass
 summary
 <endCon>
@@ -26,3 +31,4 @@ summary
 TestProb4
 TestSolu4
 <#&$#>
+<End>
