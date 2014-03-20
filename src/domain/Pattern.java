@@ -1,5 +1,6 @@
 package domain;
 
+import java.awt.Image;
 import java.util.ArrayList;
 
 public class Pattern {
@@ -7,6 +8,7 @@ public class Pattern {
 	private ArrayList<Problem> problems;
 	private ArrayList<Pattern> alternatives;
 	private ArrayList<String> consequences;
+	private Image image;
 	
 	public Pattern(String name, String sum){
 		patternName = name;
@@ -117,5 +119,10 @@ public class Pattern {
 	
 	public String toString(){
 		return patternName;
+	}
+
+	public void addImage(Image image) {
+		this.image = image;
+		
 	}
 }

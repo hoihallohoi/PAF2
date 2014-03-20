@@ -80,9 +80,10 @@ public class Controller
 		return p.getProblems().toArray();
 	}
 	
-	public static void importImage(File f){
+	public static void importImage(File f , Pattern p){
 		ImporterAdapter ia = new ImporterAdapter();
 		Image image = ia.importImage(f);
+		p.addImage(image);
 	}
 	
 }

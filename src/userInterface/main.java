@@ -1,5 +1,6 @@
 package userInterface;
 
+import java.io.File;
 import java.util.ArrayList;
 
 import domain.Context;
@@ -53,6 +54,8 @@ public class main {
 		builder.addProblem(builderProblem);
 		decorator.addProblem(decoratorProblem);
 		adapterClass.addProblem(adapterClassProblem);
+		File f = new File("Penguins.jpg");
+		Controller.importImage(f, strategy);
 		//TextExporter te = new TextExporter();
 		//te.ExportAllPatterns();
 		//Controller.Start();  
