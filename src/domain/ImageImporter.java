@@ -16,7 +16,7 @@ public Image importImage(File f){
 	BufferedImage image = null;
 	try {
 		image = ImageIO.read(f);
-		image = Scalr.resize(image, Scalr.Method.BALANCED, 100, 100);
+		image = Scalr.resize(image, Scalr.Method.BALANCED, 250, 250);
 		if (image == null) {
 			System.out.println("File is geen image.");
 			return null;

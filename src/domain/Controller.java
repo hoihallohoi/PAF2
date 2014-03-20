@@ -38,6 +38,10 @@ public class Controller
 		return allContexts;
 	}
 	
+	public static ArrayList<Pattern> getAllPatterns(){
+		return allPatterns;
+	}
+	
 	public static ArrayList<Pattern> getPatternsByContext(Object c){
 		if(c instanceof Context){
 			Context context = (Context) c;

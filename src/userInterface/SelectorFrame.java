@@ -1,8 +1,10 @@
 package userInterface;
 
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ItemEvent;
 
+import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
@@ -63,8 +65,8 @@ public class SelectorFrame extends MainFrame{
 			}
 			
 			if (event.getSource() == editorMenuItem){
-				//open editorFrame
-				JOptionPane.showMessageDialog(this,"This feature is not yet implemented");
+				this.dispose();
+				new EditFrame();
 			}
 	  }
 }

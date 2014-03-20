@@ -43,7 +43,7 @@ public class MainFrame extends JFrame implements ActionListener, ItemListener {
 		selectorMenuItem.addActionListener(this);
 		editorMenuItem.addActionListener(this);
 		
-		setSize(300, 300);
+		setSize(450, 550);
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
@@ -57,8 +57,8 @@ public class MainFrame extends JFrame implements ActionListener, ItemListener {
 		}
 		
 		if (event.getSource() == editorMenuItem){
-			//open editorFrame
-			JOptionPane.showMessageDialog(this,"This feature is not yet implemented");
+			this.dispose();
+			new EditFrame();
 		}
 
 	}
