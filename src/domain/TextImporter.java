@@ -35,21 +35,31 @@ public class TextImporter implements Importer
 		br = new BufferedReader(new InputStreamReader(fis, Charset.forName("UTF-8")));
 		try {
 			while ((line = br.readLine()) != null) {
+				System.out.println("IMPORTING name: " + line);
 			    String name = line;
+			    line = br.readLine();
+			    System.out.println("IMPORTING summ: " + line);
 			    String sum = line;
 			    Pattern p = new Pattern(name ,sum);
-			    while((line = br.readLine()).equals("endCon")){
+			    while(!(line = br.readLine()).equals("<endCon>")){
+			    	System.out.println("IMPORTING: " + line);
 			    	String con = line;
 			    	p.addConsequences(con);
 			    }
 			    while((!(line = br.readLine()).equals("<endAlt>"))){
+			    	System.out.println("IMPORTING: " + line);
 			    	String pname = line;
+			    	line = br.readLine();
+			    	System.out.println("IMPORTING: " + line);
 			    	String psum = line;
 			    	Pattern pa = new Pattern(pname, psum);
 			    	p.addAlternatives(pa);
 			    }
 			    while((!(line = br.readLine()).equals("<#&$#>"))){
+			    	System.out.println("IMPORTING1: " + line);
 			    	String problem = line;
+			    	line = br.readLine();
+			    	System.out.println("IMPORTING1: " + line);
 			    	String sol = line;
 			    	Problem prob = new Problem(problem, sol);
 			    	p.addProblem(prob);
