@@ -8,6 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
@@ -46,6 +47,8 @@ public class EditFrame extends MainFrame{
         
         name = new JTextField(p.getPatternName());
         summary = new JTextArea(p.getSummary());
+        summary.setLineWrap(true);
+		summary.setWrapStyleWord(true);
         problems = new JComboBox(p.getProblems().toArray());
         Object o = problems.getSelectedItem();
         Problem problem = (Problem)o;
@@ -59,6 +62,8 @@ public class EditFrame extends MainFrame{
         save = new JButton("Save Changes");
         
         chooseImageButton.addActionListener(this);
+        allPatterns.addItemListener(this);
+        problems.addItemListener(this);	
         
         add(choosePattern);
         add(allPatterns);
@@ -81,8 +86,6 @@ public class EditFrame extends MainFrame{
         add(consequences);
         add(save);
         
-        allPatterns.addItemListener(this);
-        problems.addItemListener(this);	
 	}
 	
 	public void itemStateChanged(ItemEvent itemEvent) {

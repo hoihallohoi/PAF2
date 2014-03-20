@@ -129,4 +129,8 @@ public class Pattern {
 	public void setImage(Image image) {
 		this.image = image;
 	}
+	
+	public Image getImage(){
+		return image;
+	}
 }

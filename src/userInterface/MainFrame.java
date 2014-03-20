@@ -1,17 +1,16 @@
 package userInterface;
 
-import java.awt.FlowLayout;
+import java.awt.BorderLayout;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
-import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
 
 @SuppressWarnings("serial")
 public class MainFrame extends JFrame implements ActionListener, ItemListener {
@@ -23,7 +22,7 @@ public class MainFrame extends JFrame implements ActionListener, ItemListener {
 	JMenuItem editorMenuItem;
 	@SuppressWarnings("serial")
 	public MainFrame() {
-		getContentPane().setLayout(new BoxLayout(getContentPane(), BoxLayout.PAGE_AXIS));
+		setLayout(new BorderLayout());
 		setTitle("Patternized");
 
 		// menubar
@@ -43,7 +42,10 @@ public class MainFrame extends JFrame implements ActionListener, ItemListener {
 		selectorMenuItem.addActionListener(this);
 		editorMenuItem.addActionListener(this);
 		
-		setSize(450, 550);
+		Toolkit tk = Toolkit.getDefaultToolkit();  
+		int xSize = ((int) tk.getScreenSize().getWidth());  
+		int ySize = ((int) tk.getScreenSize().getHeight());  
+		setSize(xSize,ySize-30);  
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);

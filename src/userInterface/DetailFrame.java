@@ -1,10 +1,13 @@
 package userInterface;
 
+import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.event.ItemEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 import domain.Controller;
@@ -27,12 +30,23 @@ public class DetailFrame extends MainFrame{
 		JLabel spacer4 = new JLabel("  ");
 		JLabel spacer5 = new JLabel("  ");
 		
+		JPanel abovePanel = new JPanel();
+		JPanel detailsPanel = new JPanel();
+		JPanel imagePanel = new JPanel();
+		JPanel problemsPanel = new JPanel();
+		JPanel consequencesPanel = new JPanel();
+		
 		name = new JLabel(pattern.getPatternName() + " Pattern");
-		//image = new JLabel(new ImageIcon(pattern.getImage()));
+		image = new JLabel(new ImageIcon(pattern.getImage()));
 		context = new JLabel("Context(s): " + Controller.getContextByPattern(pattern).toString());
 		summaryLab = new JLabel("Summary: ");
-		summary = new JTextArea(pattern.getSummary());
+		
+		summary = new JTextArea(pattern.getSummary(), 5, 10);
+		summary.setPreferredSize(new Dimension(600, 300));
 		summary.setEditable(false);
+		summary.setLineWrap(true);
+		summary.setWrapStyleWord(true);
+		
 		problemsLab = new JLabel("Problems: ");
 		problems = new JComboBox(pattern.getProblems().toArray());
 		consequencesLab = new JLabel("Consequences: ");
@@ -43,24 +57,30 @@ public class DetailFrame extends MainFrame{
         
 		solution = new JLabel("Solution: " + p.getSolutionContext());
 		
-		problems.addItemListener(this);	
+		problems.addItemListener(this);
 		
-		add(name);
-		add(spacer1);
-		//add(image);
-		add(spacer2);
-		add(context);
-		add(spacer3);
-		add(summaryLab);
-		add(summary);
-		add(spacer4);
-		add(problemsLab);
-		add(problems);
-		add(solution);
-		add(spacer5);
-		add(consequencesLab);
-		add(consequences);
+		//Add components to Panels
+		detailsPanel.add(name, BorderLayout.PAGE_START);
+		detailsPanel.add(context, BorderLayout.CENTER);
+		//detailsPanel.add(summaryLab);
+		detailsPanel.add(summary, BorderLayout.PAGE_END);
 		
+		imagePanel.add(image, BorderLayout.CENTER);
+		
+		problemsPanel.add(problemsLab, BorderLayout.LINE_START);
+		problemsPanel.add(problems, BorderLayout.AFTER_LAST_LINE);
+		problemsPanel.add(solution, BorderLayout.SOUTH);
+		
+		consequencesPanel.add(consequencesLab, BorderLayout.LINE_START);
+		consequencesPanel.add(consequences, BorderLayout.AFTER_LAST_LINE);
+		
+		abovePanel.add(detailsPanel, BorderLayout.WEST);
+		abovePanel.add(imagePanel, BorderLayout.EAST);
+		
+		//Add Panels
+		this.add(abovePanel, BorderLayout.NORTH);
+		this.add(problemsPanel, BorderLayout.CENTER);
+		this.add(consequencesPanel, BorderLayout.SOUTH);
 	}
 	
 	 public void itemStateChanged(ItemEvent itemEvent) {
