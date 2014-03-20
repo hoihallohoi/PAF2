@@ -71,4 +71,16 @@ public class Context implements ContextComponent{
 	public ArrayList<Pattern> getPatterns() {
 		return patterns;
 	}	
+	
+	public List<ContextComponent> getChildContexts(){
+		return childContexts;
+	}
+	
+	public void setChildContexts(ArrayList<ContextComponent> cc){
+		childContexts = cc;
+	}
+	
+	public void setPatterns(ArrayList<Pattern> pats){
+		patterns = pats;
+	}
 }

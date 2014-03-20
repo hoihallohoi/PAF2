@@ -26,4 +26,10 @@ public class ImporterAdapter implements Importer
 		return ii.importImage(f);
 	}
 
+	@Override
+	public ArrayList<Context> ImportAllContext() {
+		TextImporter ti = new TextImporter();
+		return ti.ImportAllContext();
+	}
+
 }

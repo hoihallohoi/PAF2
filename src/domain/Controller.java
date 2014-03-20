@@ -10,11 +10,16 @@ public class Controller
 {
 	public static ArrayList<Pattern> allPatterns = new ArrayList<Pattern>();
 	public static ArrayList<Context> allContexts = new ArrayList<Context>(); //Does not include the main contexts "Scope" and "Purpose"
-	
+	public static ArrayList<Context> everyContext = new ArrayList<Context>(); //This does actually have all contexts
 	public static void Start()
 	{
 		ImporterAdapter ia = new ImporterAdapter();
 		allPatterns = ia.ImportAllPatterns();
+		everyContext = ia.ImportAllContext();
+		for (Context c : everyContext)
+			if(!c.getName().equals("Scope") || !c.getName().equals("Purpose"))
+				allContexts.add(c);
+		
 		System.out.println("All Patterns imported!");
 	}
 	
@@ -31,6 +36,7 @@ public class Controller
 	public static Context createNewContext(String name){
 		Context c = new Context(name);
 		allContexts.add(c);
+		everyContext.add(c);
 		return c;
 	}
 	
@@ -75,6 +81,7 @@ public class Controller
 	{
 		ExporterAdapter ea = new ExporterAdapter();
 		ea.ExportAllPatterns(allPatterns);
+		ea.ExportAllContext(everyContext);
 	}
 	
 	public static void AddPattern(Pattern p)
@@ -96,6 +103,20 @@ public class Controller
 		ImporterAdapter ia = new ImporterAdapter();
 		Image image = ia.importImage(f);
 		p.addImage(image);
+	}
+	
+	public static Pattern getPatterByName(String s){
+		  for (Pattern p : allPatterns)
+		   if (p.getPatternName().equals(s))
+		    return p;
+		  return null;
+		 }
+	
+	public static Context getContextByName(String s){
+		for (Context c : allContexts)
+			if (c.getName().equals(s))
+				return c;
+		return null;
 	}
 	
 }

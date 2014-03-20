@@ -7,4 +7,5 @@ public interface Importer
 {
 	public Pattern ImportPattern(String p);
 	public ArrayList<Pattern> ImportAllPatterns();
+	public ArrayList<Context> ImportAllContext();
 }

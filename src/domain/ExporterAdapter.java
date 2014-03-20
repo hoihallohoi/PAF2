@@ -13,4 +13,11 @@ public class ExporterAdapter implements Exporter
 		te.ExportAllPatterns(patterns);
 	}
 
+	@Override
+	public void ExportAllContext(ArrayList<Context> contexts) {
+		TextExporter te = new TextExporter();
+		te.ExportAllContext(contexts);
+		
+	}
+
 }
