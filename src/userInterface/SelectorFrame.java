@@ -44,11 +44,9 @@ public class SelectorFrame extends MainFrame{
 		this.add(selectButton);
 	}
 	
-	  @SuppressWarnings("deprecation")
 	public void itemStateChanged(ItemEvent itemEvent) {
 	        Object c = contextSelect.getSelectedItem();
-	       DefaultComboBoxModel patterns = new DefaultComboBoxModel(Controller.getPatternsByContext(c).toArray());
-	       selectPattern.setModel(patterns);
+	        selectPattern.setModel(new DefaultComboBoxModel(Controller.getPatternsByContext(c).toArray()));
 	  }
 	  
 	  public void actionPerformed(ActionEvent event){

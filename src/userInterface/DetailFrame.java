@@ -2,7 +2,7 @@ package userInterface;
 
 import java.awt.event.ItemEvent;
 
-import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 
@@ -12,16 +12,15 @@ import domain.Problem;
 
 public class DetailFrame extends MainFrame{
 	
-	JLabel name, context, summary, solution, consequences, spacer;
+	JLabel name, image, context, summary, solution, consequences, spacer;
 	JComboBox problems;
 	
 	public DetailFrame(Object patternObject){
 		super();
 		Pattern pattern = (Pattern)patternObject;
 		
-		spacer = new JLabel("                  ");
-		
 		name = new JLabel(pattern.getPatternName());
+		image = new JLabel(new ImageIcon(pattern.getImage()));
 		context = new JLabel(Controller.getContextByPattern(pattern).toString());
 		summary = new JLabel(pattern.getSummary());
 		problems = new JComboBox(pattern.getProblems().toArray());
@@ -35,13 +34,10 @@ public class DetailFrame extends MainFrame{
 		problems.addItemListener(this);	
 		
 		add(name);
-		add(spacer);
+		//add(image);
 		add(context);
-		add(spacer);
 		add(summary);
-		add(spacer);
 		add(problems);
-		add(spacer);
 		add(solution);
 		add(consequences);
 		
