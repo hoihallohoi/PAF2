@@ -49,13 +49,21 @@ public class Controller
 	public static ArrayList<Context> getContextByPattern(Pattern p){
 		ArrayList<Context> selectedContexts = new ArrayList<Context>();
 		for (Context c : allContexts){
-			for (Pattern pattern : allPatterns){
+			for (Pattern pattern : c.getPatterns()){
 				if(pattern.equals(p)){
 					selectedContexts.add(c);
 				}
 			}
 		}
 		return selectedContexts;
+	}
+	
+	public static ArrayList<String> getConsequenceByPattern(Object c){
+		if(c instanceof Pattern){
+			Pattern pattern = (Pattern) c;
+			return pattern.getConsequences();
+		}
+		return null;
 	}
 	
 	

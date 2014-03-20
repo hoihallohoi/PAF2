@@ -3,6 +3,7 @@ package userInterface;
 import java.awt.event.ActionEvent;
 import java.awt.event.ItemEvent;
 
+import javax.swing.BoxLayout;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -21,16 +22,16 @@ public class SelectorFrame extends MainFrame{
 	public SelectorFrame(){
 		super();
 		
+		
 		contextSelectLabel = new JLabel("Select Scope/Purpose: ");
 		contextSelect = new JComboBox(Controller.getAllContexts().toArray());
 		contextSelect.addItemListener(this);
 		
+		Object c = contextSelect.getSelectedItem();
+	    		
 		selectPatternLabel = new JLabel("Select Pattern: ");
-		selectPattern = new JComboBox();
+		selectPattern = new JComboBox(Controller.getPatternsByContext(c).toArray());
 		selectPattern.addItemListener(this);
-		
-		selectPatternLabel.setVisible(false);
-		selectPattern.setVisible(false);
 		
 		selectButton = new JButton("Select Pattern");
 		selectButton.addActionListener(this);
@@ -43,12 +44,11 @@ public class SelectorFrame extends MainFrame{
 		this.add(selectButton);
 	}
 	
-	  public void itemStateChanged(ItemEvent itemEvent) {
+	  @SuppressWarnings("deprecation")
+	public void itemStateChanged(ItemEvent itemEvent) {
 	        Object c = contextSelect.getSelectedItem();
-	        DefaultComboBoxModel patterns = new DefaultComboBoxModel(Controller.getPatternsByContext(c).toArray());
-	        selectPattern.setModel(patterns);
-	        selectPatternLabel.setVisible(true);
-	        selectPattern.setVisible(true);
+	       DefaultComboBoxModel patterns = new DefaultComboBoxModel(Controller.getPatternsByContext(c).toArray());
+	       selectPattern.setModel(patterns);
 	  }
 	  
 	  public void actionPerformed(ActionEvent event){

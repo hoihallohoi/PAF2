@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
+import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -22,7 +23,7 @@ public class MainFrame extends JFrame implements ActionListener, ItemListener {
 	JMenuItem editorMenuItem;
 	@SuppressWarnings("serial")
 	public MainFrame() {
-		setLayout(new FlowLayout());
+		getContentPane().setLayout(new BoxLayout(getContentPane(), BoxLayout.PAGE_AXIS));
 		setTitle("Patternized");
 
 		// menubar
