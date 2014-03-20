@@ -99,6 +99,14 @@ public class Pattern {
 		this.alternatives = alternatives;
 	}
 
+	public ArrayList<String> getConsequences() {
+		return consequences;
+	}
+
+	public void setConsequences(ArrayList<String> consequences) {
+		this.consequences = consequences;
+	}
+	
 	public ArrayList<Problem> getProblems() {
 		return problems;
 	}
