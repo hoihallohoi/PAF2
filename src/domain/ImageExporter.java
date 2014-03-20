@@ -11,7 +11,7 @@ public class ImageExporter{
 	private static final String formatName = "jpg";
 
 public void exportImage(Pattern p){
-	File f = new File(p.getPatternName() + " image");
+	File f = new File(p.getPatternName() + " image."+formatName);
 	BufferedImage image = (BufferedImage) p.getImage();
 	if (image == null)
 		return;
