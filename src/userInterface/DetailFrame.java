@@ -28,7 +28,7 @@ public class DetailFrame extends MainFrame{
 		JLabel spacer5 = new JLabel("  ");
 		
 		name = new JLabel(pattern.getPatternName() + " Pattern");
-		image = new JLabel(new ImageIcon(pattern.getImage()));
+		//image = new JLabel(new ImageIcon(pattern.getImage()));
 		context = new JLabel("Context(s): " + Controller.getContextByPattern(pattern).toString());
 		summaryLab = new JLabel("Summary: ");
 		summary = new JTextArea(pattern.getSummary());
@@ -47,7 +47,7 @@ public class DetailFrame extends MainFrame{
 		
 		add(name);
 		add(spacer1);
-		add(image);
+		//add(image);
 		add(spacer2);
 		add(context);
 		add(spacer3);

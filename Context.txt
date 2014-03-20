@@ -1,42 +1,63 @@
 Class
 <endChilds>
+Factory Method
+Interpreter
+Template Method
+Adaptor(class)
 <End>
 Object
 <endChilds>
-Strategy
+Abstract Factory
 Builder
+Prototype
+Singleton
+Adapter(object)
+Bridge
+Composite
 Decorator
-AdapterClass
+Facade
+Flyweight
+Proxy
+Chain of Responsibility
+Command
+Iterator
+Mediator
+Memento
+Observer
+State
+Strategy
+Visitor
 <End>
 Creational
 <endChilds>
+Factory Method
+Abstract Factory
+Builder
+Prototype
+Singleton
 <End>
 Behavioral
 <endChilds>
+Chain of Responsibility
+Command
+Iterator
+Mediator
+Memento
+Observer
+State
 Strategy
-Builder
-Decorator
-AdapterClass
+Visitor
+Interpreter
+Template Method
 <End>
 Structural
 <endChilds>
-<End>
-Scope
-Class
-Object
-<endChilds>
-Strategy
-Builder
+Adapter(object)
+Bridge
+Composite
 Decorator
-AdapterClass
-<End>
-Purpose
-Creational
-Behavioral
-Structural
-<endChilds>
-Strategy
-Builder
-Decorator
-AdapterClass
+Facade
+Flyweight
+Proxy
+Adaptor(class)
 <End>

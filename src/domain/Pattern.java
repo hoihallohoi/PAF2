@@ -9,10 +9,6 @@ public class Pattern {
 	private ArrayList<Pattern> alternatives;
 	private ArrayList<String> consequences;
 	private Image image;
-	
-	public Image getImage() {
-		return image;
-	}
 
 	public Pattern(String name, String sum){
 		patternName = name;
