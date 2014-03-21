@@ -16,15 +16,15 @@ public class main {
 	 */
 	public static void main(String[] args) {
 
-		Context classScope = Controller.createNewContext("Class");
-		Context objectScope = Controller.createNewContext("Object");
+		Context classScope = Controller.createNewSubContext("Class");
+		Context objectScope = Controller.createNewSubContext("Object");
 
-		Context creational = Controller.createNewContext("Creational");
-		Context behavioral = Controller.createNewContext("Behavioral");
-		Context structural = Controller.createNewContext("Structural");
+		Context creational = Controller.createNewSubContext("Creational");
+		Context behavioral = Controller.createNewSubContext("Behavioral");
+		Context structural = Controller.createNewSubContext("Structural");
 
-		Context scope = new Context("Scope");
-		Context purpose = new Context("Purpose");
+		Context scope = Controller.createNewContext("Scope");
+		Context purpose = Controller.createNewContext("Purpose");
 
 		scope.addComponent(classScope);
 		scope.addComponent(objectScope);

@@ -6,14 +6,23 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.event.TreeSelectionEvent;
+import javax.swing.event.TreeSelectionListener;
+import javax.swing.tree.DefaultMutableTreeNode;
+
+import domain.Context;
+import domain.ContextComponent;
+import domain.Controller;
+import domain.Pattern;
 
 @SuppressWarnings("serial")
-public class MainFrame extends JFrame implements ActionListener, ItemListener {
+public class MainFrame extends JFrame implements ActionListener, ItemListener, TreeSelectionListener {
 
 	JMenuBar menuBar;
 	JMenu selectorMenu;
@@ -55,7 +64,7 @@ public class MainFrame extends JFrame implements ActionListener, ItemListener {
 	public void actionPerformed(ActionEvent event) {
 		if (event.getSource() == selectorMenuItem){
 			this.dispose();
-			new SelectorFrame();
+			new DetailFrame();
 		}
 		
 		if (event.getSource() == editorMenuItem){
@@ -70,4 +79,32 @@ public class MainFrame extends JFrame implements ActionListener, ItemListener {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void valueChanged(TreeSelectionEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	protected void createNodes(DefaultMutableTreeNode top){
+		 DefaultMutableTreeNode category = null;
+		 DefaultMutableTreeNode subContext = null;
+		 DefaultMutableTreeNode pattern = null;
+		 
+		 ArrayList<Context> contexts = new ArrayList<Context>();
+		 contexts = Controller.getAllContexts();
+		 for(Context c : contexts){
+			 category = new DefaultMutableTreeNode(c);
+			 top.add(category);
+			 for (ContextComponent c2 : c.getChildContexts()){
+			 	subContext = new DefaultMutableTreeNode(c2);
+			 	category.add(subContext);
+			 	for( Pattern p : c2.getPatterns()){
+			 		pattern = new DefaultMutableTreeNode(p);
+			 		subContext.add(pattern);
+			 	}
+			 }
+		 }
+	 }
+	
 }

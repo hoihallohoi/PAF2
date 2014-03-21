@@ -61,3 +61,62 @@ Flyweight
 Proxy
 Adaptor(class)
 <End>
+Scope
+Class
+Object
+<endChilds>
+Factory Method
+Abstract Factory
+Prototype
+Singleton
+Adapter(object)
+Bridge
+Composite
+Facade
+Flyweight
+Proxy
+Chain of Responsibility
+Command
+Iterator
+Mediator
+Memento
+Observer
+State
+Visitor
+Interpreter
+Template Method
+Strategy
+Builder
+Decorator
+Adaptor(class)
+<End>
+Purpose
+Creational
+Behavioral
+Structural
+<endChilds>
+Factory Method
+Abstract Factory
+Prototype
+Singleton
+Adapter(object)
+Bridge
+Composite
+Facade
+Flyweight
+Proxy
+Chain of Responsibility
+Command
+Iterator
+Mediator
+Memento
+Observer
+State
+Visitor
+Interpreter
+Template Method
+Strategy
+Builder
+Decorator
+Adaptor(class)
+<End>

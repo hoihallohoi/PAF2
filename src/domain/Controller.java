@@ -9,7 +9,8 @@ import java.util.List;
 public class Controller 
 {
 	public static ArrayList<Pattern> allPatterns = new ArrayList<Pattern>();
-	public static ArrayList<Context> allContexts = new ArrayList<Context>(); //Does not include the main contexts "Scope" and "Purpose"
+	public static ArrayList<Context> allContexts = new ArrayList<Context>(); //Only has main contexts
+	public static ArrayList<Context> allSubContexts = new ArrayList<Context>(); //had all except Scope and Purpose
 	public static ArrayList<Context> everyContext = new ArrayList<Context>(); //This does actually have all contexts
 	public static void Start()
 	{
@@ -40,6 +41,13 @@ public class Controller
 		return c;
 	}
 	
+	public static Context createNewSubContext(String name){
+		Context c = new Context(name);
+		allSubContexts.add(c);
+		everyContext.add(c);
+		return c;
+	}
+	
 	public static ArrayList<Context> getAllContexts(){
 		return allContexts;
 	}
@@ -58,7 +66,7 @@ public class Controller
 	
 	public static ArrayList<Context> getContextByPattern(Pattern p){
 		ArrayList<Context> selectedContexts = new ArrayList<Context>();
-		for (Context c : allContexts){
+		for (Context c : allSubContexts){
 			for (Pattern pattern : c.getPatterns()){
 				if(pattern.equals(p)){
 					selectedContexts.add(c);
@@ -117,6 +125,20 @@ public class Controller
 			if (c.getName().equals(s))
 				return c;
 		return null;
+	}
+
+	public static void editPattern(Pattern pattern, String name, String summary, Problem problem, String solution) {
+		pattern.setPatternName(name);
+		pattern.setSummary(summary);
+		problem.setSolutionContext(solution);
+		
+	}
+	
+	public static void editPattern(Pattern pattern, String name, File image, String summary, Problem problem, String solution) {
+		pattern.setPatternName(name);
+		importImage(image, pattern);
+		pattern.setSummary(summary);
+		problem.setSolutionContext(solution);
 	}
 	
 }
