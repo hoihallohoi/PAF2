@@ -140,5 +140,24 @@ public class Controller
 		pattern.setSummary(summary);
 		problem.setSolutionContext(solution);
 	}
+
+	public static void removePattern(Pattern pattern, Problem problem) {
+		pattern.removeProblem(problem);
+		
+	}
+	
+	public static void removeConsequence(Pattern pattern, String con) {
+		pattern.removeConsequences(con);
+		
+	}
+
+	public static void addNewProblem(Pattern pattern, String problem, String solution) {
+		Problem p = new Problem(problem, solution);
+		pattern.addProblem(p);
+	}
+	
+	public static void addNewConsequence(Pattern pattern, String con) {
+		pattern.addConsequences(con);
+	}
 	
 }

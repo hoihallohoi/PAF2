@@ -7,11 +7,13 @@ import java.awt.event.ItemEvent;
 import java.io.File;
 import java.util.ArrayList;
 
+import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -136,7 +138,7 @@ public class EditFrame extends MainFrame {
 
 		editPanel.setLayout(new BoxLayout(editPanel, BoxLayout.Y_AXIS));
 		editPanel.add(namePanel);
-		//editPanel.add(imagePanel);
+		// editPanel.add(imagePanel);
 		editPanel.add(summaryPanel);
 		editPanel.add(problemPanel);
 		editPanel.add(solutionPanel);
@@ -150,9 +152,9 @@ public class EditFrame extends MainFrame {
 	}
 
 	public void itemStateChanged(ItemEvent itemEvent) {
-		 Object c = problems.getSelectedItem();
-		 Problem p = (Problem)c;
-		 solution.setText(p.getSolutionContext());
+		Object c = problems.getSelectedItem();
+		Problem p = (Problem) c;
+		solution.setText(p.getSolutionContext());
 	}
 
 	// JTree event handler
@@ -197,6 +199,11 @@ public class EditFrame extends MainFrame {
 	}
 
 	public void actionPerformed(ActionEvent event) {
+		DefaultMutableTreeNode node = (DefaultMutableTreeNode) tree
+				.getLastSelectedPathComponent();
+		Object nodeInfo = node.getUserObject();
+		Pattern pattern = (Pattern) nodeInfo;
+
 		if (event.getSource() == selectorMenuItem) {
 			this.dispose();
 			new DetailFrame();
@@ -214,24 +221,62 @@ public class EditFrame extends MainFrame {
 				chooserLabel.setText("File Selected : " + file.getName());
 			}
 		}
-		
-		if (event.getSource() == save){
+
+		if (event.getSource() == save) {
 			String nameText = name.getText();
 			String summaryText = summary.getText();
 			Problem prob = (Problem) problems.getSelectedItem();
 			String solutionText = solution.getText();
-			
-			DefaultMutableTreeNode node = (DefaultMutableTreeNode) tree.getLastSelectedPathComponent();
-			Object nodeInfo = node.getUserObject();
-			Pattern pattern = (Pattern) nodeInfo;
-			
-			//if(file.equals(null)){
-			//File image = file;
-			//Controller.editPattern(pattern, nameText, image, summaryText, prob, solutionText);
-			//}
-			//else{
-				Controller.editPattern(pattern, nameText, summaryText, prob, solutionText);
-			//}
+
+			// if(file.equals(null)){
+			// File image = file;
+			// Controller.editPattern(pattern, nameText, image, summaryText,
+			// prob, solutionText);
+			// }
+			// else{
+			Controller.editPattern(pattern, nameText, summaryText, prob,
+					solutionText);
+			// }
+		}
+
+		if (event.getSource() == removeProblem) {
+			Problem p = (Problem) problems.getSelectedItem();
+			Controller.removePattern(pattern, p);
+		}
+
+		if (event.getSource() == removeCon) {
+			String con = (String) consequences.getSelectedItem();
+			Controller.removeConsequence(pattern, con);
+		}
+
+		if (event.getSource() == addProblem) {
+			JTextField xField = new JTextField(5);
+			JTextField yField = new JTextField(5);
+
+			JPanel myPanel = new JPanel();
+			myPanel.add(new JLabel("Problem: "));
+			myPanel.add(xField);
+			myPanel.add(Box.createHorizontalStrut(15)); // a spacer
+			myPanel.add(new JLabel("Solution: "));
+			myPanel.add(yField);
+
+			int result = JOptionPane.showConfirmDialog(null, myPanel,"Please fill in the text fields",JOptionPane.OK_CANCEL_OPTION);
+			if (result == JOptionPane.OK_OPTION) {
+				Controller.addNewProblem(pattern, xField.getText(), yField.getText());
+			}
+		}
+		
+		if (event.getSource() == addCon) {
+			JTextField xField = new JTextField(5);
+
+			JPanel myPanel = new JPanel();
+			myPanel.add(new JLabel("Consequence: "));
+			myPanel.add(xField);
+
+			int result = JOptionPane.showConfirmDialog(null, myPanel,"Please fill in the text fields",JOptionPane.OK_CANCEL_OPTION);
+			if (result == JOptionPane.OK_OPTION) {
+				Controller.addNewConsequence(pattern, xField.getText());
+			}
 		}
 
 	}
